@@ -12,6 +12,7 @@ Creates a web-based tool to organize video files into an archive with tagging an
 - MySQL
 - PHP
 - ghostscript
+- Python (with libraries: MoviePy)
 
 # Thanks To
 @melmatsuoka for the video contact sheet script
