@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.7.15)
 # Database: mv_dev
-# Generation Time: 2016-12-05 20:19:38 +0000
+# Generation Time: 2016-12-05 20:39:55 +0000
 # ************************************************************
 
 
@@ -36,6 +36,7 @@ CREATE TABLE `mv_videoarchive` (
   `transcript` text,
   `sheet` varchar(255) DEFAULT NULL,
   `gif` varchar(255) DEFAULT NULL,
+  `download` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

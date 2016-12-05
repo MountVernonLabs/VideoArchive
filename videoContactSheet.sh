@@ -46,7 +46,7 @@ for FILE in *.{wmv,avi,rm,ram,mpg,mpeg,mov,mp4,flv,asf,mkv,m4v};
 		montage .snapshots/"._${FILE}"_*.png -tile 4 -geometry 240x153 -title "${FILE}" "${FILE}_sheet.jpg"
 
 		echo "Creating master thumbnail for \"${FILE}\""
-		ffmpeg -i "${FILE}" -vf "select=gt(scene\,0.5)" -frames:v 5 -vsync vfr -s 240x153 "${FILE}"_thumb.jpg 2> /dev/null
+		ffmpeg -i "${FILE}" -ss 00:00:10.000 -s 240x153 "${FILE}"_thumb.jpg
 
 		echo "Creating animated GIF thumbnail for \"${FILE}\""
 		ffmpeg -ss 00:00:00.000 -i "${FILE}" -pix_fmt rgb24 -r 1 -s 240x153 -t 00:00:30.000 "${FILE}"_thumb.gif 2> /dev/null
