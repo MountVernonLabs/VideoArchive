@@ -26,3 +26,6 @@ cfg.s3conn.upload(sys.argv[1]+'_sheet.jpg',f,cfg.s3bucket)
 
 f = open(sys.argv[1]+'_thumb.jpg','rb')
 cfg.s3conn.upload(sys.argv[1]+'_thumb.jpg',f,cfg.s3bucket)
+
+f = open(sys.argv[1]+'_thumb.gif','rb')
+cfg.s3conn.upload(sys.argv[1]+'_thumb.gif',f,cfg.s3bucket)

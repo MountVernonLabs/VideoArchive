@@ -47,6 +47,11 @@ for FILE in *.{wmv,avi,rm,ram,mpg,mpeg,mov,mp4,flv,asf,mkv,m4v};
 
 		echo "Creating master thumbnail for \"${FILE}\""
 		ffmpeg -i "${FILE}" -vf "select=gt(scene\,0.5)" -frames:v 5 -vsync vfr "${FILE}"_thumb.jpg 2> /dev/null
+
+		echo "Creating animated GIF thumbnail for \"${FILE}\""
+		ffmpeg -ss 00:00:00.000 -i "${FILE}" -pix_fmt rgb24 -r 1 -s 240x153 -t 00:00:30.000 "${FILE}"_thumb.gif 2> /dev/null
+
+
 		# purge the temporary .snapshots folder
 
 		echo "Cleaning up tempfiles...\n"
