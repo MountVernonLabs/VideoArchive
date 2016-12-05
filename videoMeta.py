@@ -1,4 +1,5 @@
 import os.path, time, sys
+import config as cfg
 
 # Get the clip durration using moviepy
 from moviepy.video.io.VideoFileClip import VideoFileClip
@@ -13,3 +14,6 @@ print sys.argv[1]
 
 # Get the file prefix to use as an ID
 print os.path.splitext(sys.argv[1])[0]
+
+# Retrieves value from external config file
+print cfg.test
