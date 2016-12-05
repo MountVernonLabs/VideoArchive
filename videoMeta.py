@@ -1,4 +1,4 @@
-import os.path, time, sys, tinys3
+import os.path, time, sys
 import config as cfg
 
 # Get the clip durration using moviepy
@@ -16,4 +16,4 @@ print sys.argv[1]
 print os.path.splitext(sys.argv[1])[0]
 
 # Retrieves value from external config file
-print cfg.test
+print cfg.s3bucket
