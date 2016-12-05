@@ -7,7 +7,7 @@ clip = VideoFileClip(sys.argv[1])
 durration = clip.duration
 
 # Get date created (format in MySQL date format)
-created = time.strftime('%Y-%m-%d',time.gmtime(os.path.getctime(sys.argv[1])))
+created = time.strftime('%Y-%m-%d',time.gmtime(os.path.getmtime(sys.argv[1])))
 
 # File name (passed in as first argument)
 filename = sys.argv[1]
