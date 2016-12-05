@@ -1,4 +1,4 @@
-import os.path, time, sys
+import os.path, time, sys, tinys3
 import config as cfg
 
 # Get the clip durration using moviepy

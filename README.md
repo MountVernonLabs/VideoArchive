@@ -11,7 +11,7 @@ Creates a web-based tool to organize video files into an archive with tagging an
 - acd_cli
 - MySQL
 - ghostscript
-- Python (with libraries: MoviePy)
+- Python (with libraries: MoviePy, tinys3)
 
 # Thanks To
 @melmatsuoka for the video contact sheet script
