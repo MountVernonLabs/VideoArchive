@@ -1,4 +1,4 @@
-import os.path, time, sys
+import os.path, time, sys, tinys3
 import config as cfg
 
 # Get the clip durration using moviepy
@@ -17,3 +17,12 @@ print os.path.splitext(sys.argv[1])[0]
 
 # Retrieves value from external config file
 print cfg.s3bucket
+
+# Upload to S3
+print "Uploading to S3"
+
+f = open(sys.argv[1]+'_sheet.png','rb')
+cfg.s3conn.upload(sys.argv[1]+'_sheet.png',f,cfg.s3bucket)
+
+f = open(sys.argv[1]+'_thumb.png','rb')
+cfg.s3conn.upload(sys.argv[1]+'_thumb.png',f,cfg.s3bucket)
