@@ -10,7 +10,6 @@ Creates a web-based tool to organize video files into an archive with tagging an
 - ImageMagick
 - acd_cli
 - MySQL
-- PHP
 - ghostscript
 - Python (with libraries: MoviePy)
 
