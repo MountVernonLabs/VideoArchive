@@ -43,8 +43,10 @@ for FILE in *.{wmv,avi,rm,ram,mpg,mpeg,mov,mp4,flv,asf,mkv,m4v};
 		# assemble the contact sheet, using ImageMagick's "montage" util
 
 		echo "Compiling contact sheet for \"${FILE}\""
-		montage .snapshots/"._${FILE}"_*.png -tile 4 -geometry 240x153 -title "${FILE}" "${FILE}.png"
+		montage .snapshots/"._${FILE}"_*.png -tile 4 -geometry 240x153 -title "${FILE}" "${FILE}_sheet.png"
 
+		echo "Creating master thumbnail for \"${FILE}\""
+		ffmpeg -i "${FILE}" -vf "select=gt(scene\,0.5)" -frames:v 5 -vsync vfr "${FILE}"_thumb.png 2> /dev/null
 		# purge the temporary .snapshots folder
 
 		echo "Cleaning up tempfiles...\n"

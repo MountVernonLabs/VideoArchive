@@ -1,6 +1,15 @@
+import os.path, time, sys
+
+# Get the clip durration using moviepy
 from moviepy.video.io.VideoFileClip import VideoFileClip
-clip = VideoFileClip("Come Back to Where it All Started-HD.mp4")
+clip = VideoFileClip(sys.argv[1])
 print( clip.duration )
 
-import os.path, time
-print time.strftime('%Y-%m-%d',time.gmtime(os.path.getctime("Come Back to Where it All Started-HD.mp4")))
+# Get date created (format in MySQL date format)
+print time.strftime('%Y-%m-%d',time.gmtime(os.path.getctime(sys.argv[1])))
+
+# File name (passed in as first argument)
+print sys.argv[1]
+
+# Get the file prefix to use as an ID
+print os.path.splitext(sys.argv[1])[0]
