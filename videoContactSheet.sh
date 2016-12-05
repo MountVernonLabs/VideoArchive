@@ -51,6 +51,11 @@ for FILE in *.{wmv,avi,rm,ram,mpg,mpeg,mov,mp4,flv,asf,mkv,m4v};
 		echo "Creating animated GIF thumbnail for \"${FILE}\""
 		ffmpeg -ss 00:00:00.000 -i "${FILE}" -pix_fmt rgb24 -r 1 -s 240x153 -t 00:00:30.000 "${FILE}"_thumb.gif 2> /dev/null
 
+		# Create the transcript
+		echo "Transcribing \"${FILE}\""
+		ffmpeg -i "${FILE}" -ar 16000 -ac 1 file.wav 2> /dev/null
+		pocketsphinx_continuous -infile file.wav -logfn /dev/null > "${FILE}".txt
+		rm *.wav
 
 		# purge the temporary .snapshots folder
 
@@ -63,5 +68,6 @@ for FILE in *.{wmv,avi,rm,ram,mpg,mpeg,mov,mp4,flv,asf,mkv,m4v};
 		# clean up the generated files and original source video
 		rm *.jpg
 		rm *.gif
+		rm *.txt
 
 	done

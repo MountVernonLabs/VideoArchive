@@ -28,8 +28,11 @@ f = open(sys.argv[1]+'_thumb.gif','rb')
 cfg.s3conn.upload(sys.argv[1]+'_thumb.gif',f,cfg.s3bucket)
 
 thumbnail = '//s3.amazonaws.com/mtv-videoarchive/'+sys.argv[1]+'_thumb.jpg'
+sheet = '//s3.amazonaws.com/mtv-videoarchive/'+sys.argv[1]+'_sheet.jpg'
 gif = '//s3.amazonaws.com/mtv-videoarchive/'+sys.argv[1]+'_thumb.gif'
 
+with open(sys.argv[1]+'.txt', 'r') as myfile:
+    transcript=myfile.read()
 
 # Insert record in database
 print "Writing to database"
@@ -37,8 +40,8 @@ print "Writing to database"
 try:
     with cfg.connection.cursor() as cursor:
         # Create a new record
-        sql = "INSERT INTO `mv_videoarchive` (`object`, `produced`, `thumbnail`, `length`) VALUES (%s, %s, %s, %s)"
-        cursor.execute(sql, (prefix, created, thumbnail, durration))
+        sql = "INSERT INTO `mv_videoarchive` (`object`, `produced`, `thumbnail`, `length`, `sheet`, `gif`, `transcript`) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        cursor.execute(sql, (prefix, created, thumbnail, durration, sheet, gif, transcript))
 
     # connection is not autocommit by default. So you must commit to save
     # your changes.
