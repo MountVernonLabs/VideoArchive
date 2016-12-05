@@ -37,17 +37,17 @@ for FILE in *.{wmv,avi,rm,ram,mpg,mpeg,mov,mp4,flv,asf,mkv,m4v};
 		# thumbnails are written to a hidden .snapshots temp folder in the same folder the script was run in.
 
 		echo "------------------------------------------------"
-		echo -e "\nExtracting thumbnails for \"${FILE}\""
+		echo "\nExtracting thumbnails for \"${FILE}\""
 		ffmpeg -loglevel warning -i "${FILE}" -f image2 -vf fps=fps=1/$SNAPSHOT_INTERVAL .snapshots/._"${FILE}"_%03d.png 2> /dev/null
 
 		# assemble the contact sheet, using ImageMagick's "montage" util
 
-		echo -e "Compiling contact sheet for \"${FILE}\""
-		montage .snapshots/"._${FILE}"_*.png -geometry +3+1 -title "${FILE}" "${FILE}.png"
+		echo "Compiling contact sheet for \"${FILE}\""
+		montage .snapshots/"._${FILE}"_*.png -tile 4 -geometry 240x153 -title "${FILE}" "${FILE}.png"
 
 		# purge the temporary .snapshots folder
 
-		echo -e "Cleaning up tempfiles...\n"
+		echo "Cleaning up tempfiles...\n"
 		rm -f .snapshots/._"${FILE}"_*.png
 
 	done

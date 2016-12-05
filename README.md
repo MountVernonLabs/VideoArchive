@@ -11,6 +11,7 @@ Creates a web-based tool to organize video files into an archive with tagging an
 - acd_cli
 - MySQL
 - PHP
+- ghostscript
 
 # Thanks To
 @melmatsuoka for the video contact sheet script
