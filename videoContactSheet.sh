@@ -43,10 +43,10 @@ for FILE in *.{wmv,avi,rm,ram,mpg,mpeg,mov,mp4,flv,asf,mkv,m4v};
 		# assemble the contact sheet, using ImageMagick's "montage" util
 
 		echo "Compiling contact sheet for \"${FILE}\""
-		montage .snapshots/"._${FILE}"_*.png -tile 4 -geometry 240x153 -title "${FILE}" "${FILE}_sheet.jpg"
+		montage .snapshots/"._${FILE}"_*.png -tile 4 -geometry 240x153 -title "${FILE}" "${FILE}_sheet.jpg" 2> /dev/null
 
 		echo "Creating master thumbnail for \"${FILE}\""
-		ffmpeg -i "${FILE}" -ss 00:00:10.000 -s 240x153 "${FILE}"_thumb.jpg
+		ffmpeg -i "${FILE}" -ss 00:00:10.000 -s 240x153 "${FILE}"_thumb.jpg 2> /dev/null
 
 		echo "Creating animated GIF thumbnail for \"${FILE}\""
 		ffmpeg -ss 00:00:00.000 -i "${FILE}" -pix_fmt rgb24 -r 1 -s 240x153 -t 00:00:30.000 "${FILE}"_thumb.gif 2> /dev/null
@@ -69,5 +69,6 @@ for FILE in *.{wmv,avi,rm,ram,mpg,mpeg,mov,mp4,flv,asf,mkv,m4v};
 		rm *.jpg
 		rm *.gif
 		rm *.txt
+		rm "${FILE}"
 
 	done
